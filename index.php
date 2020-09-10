@@ -11,7 +11,8 @@ get and post functionality
 
 get:
 
-    simply respond Hello World
+    GET to localhost:5000/?name=funny
+    returns funny
 
 post:
 
@@ -19,9 +20,8 @@ post:
     format: 
 
         {
-            text: text_to_respond
+            "text": "some very intriguing text that surely not only you will be reading"
         }
-
 */
 
 /*
@@ -37,25 +37,49 @@ create response for GET and POST request method
 
 */
 
+/*
+#########################################
+accessing headers and body
+#########################################
+
+$_GET returns what is requested trough the URL
+$_POST returns what is in the object 
+correction, it accesses form-data
+if one wants to access the body, file_get_contents('php://input')
+
+*/
+
 //lets store the request method
 $request_method = $_SERVER['REQUEST_METHOD'];
 echo "request method";
 echo "\n";
 echo $request_method;
 echo "\n";
+##############
+# $_REQUEST contains get, post and cookies, dropped it to see how it was structured, doesnt allow to see what information belongs to get or post aside from get information being before post information.
+// var_dump($_REQUEST);
+// echo "\n";
 
 response($request_method);
 
 function response($request_method) {
     switch($request_method) {
         case 'GET': 
-            echo "GET";
+            echo "getting" , $_GET['name'];
             echo "\n";
-            // break statements are essential for switches, good reminder haha
-            // this seems to favour the choice of chaining cases witht he same output over saving the hassle of writing break statements.
+
+            // break statements are essential for switches, good reminder haha.
+            // this seems to allow the choice of chaining cases witht he same output, saving the hassle of writing break statements wouldn't prevent this from being possible.
             break;
         case 'POST':
-            echo "POST";
+            // access and store the file that gets streamed
+            $body = file_get_contents('php://input');
+            // decode json, set second parameter to true.
+            // this returns associative array instead of an object, there doesnt seem to be much of a difference between the two aside from OOP applications.
+            // personally more familiar with the ['key'] method from js and py, hence the preference.
+            $body = json_decode($body, true);
+            echo "you send the following text:\n";
+            echo $body['text'];
             echo "\n";
             break;
         default:
