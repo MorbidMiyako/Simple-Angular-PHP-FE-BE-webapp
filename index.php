@@ -23,3 +23,16 @@ post:
         }
 
 */
+
+/*
+########################################
+outline plan to build api
+########################################
+
+register which request method is used
+
+implement switch statement to react accordingly to the request method
+
+create response for GET and POST request method
+
+*/
