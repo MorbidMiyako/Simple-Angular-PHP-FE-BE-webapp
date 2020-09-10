@@ -31,12 +31,14 @@ Print "$_SERVER";
 
 /*
 ###############################
+the essence of a PHP server -> echo or Print gives response -> echo is faster than Print
 ###############################
 
 response(200,"Hello, World!");
+
 function response($status,$status_message)
 {
-	echo $status_message
+	echo $status_message;
 }
 
 */
