@@ -90,6 +90,7 @@ var_dump($insertMany);
 // find
 
 // find one returns the first instance that matches the key->value pair
+// you cant use backticks, if you want to use a varialbe, use " instead
 $findMat = $db->first_db->findOne(['item' => 'mat']);
 var_dump($findMat);
 
