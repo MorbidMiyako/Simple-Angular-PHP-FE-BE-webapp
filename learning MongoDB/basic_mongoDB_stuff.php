@@ -1,6 +1,18 @@
 <?php
 
 ########################
+// step 0:
+########################
+
+// folow the instruction in the learning PHP/basic_post&get_api.php to install mongodb
+// go to cloud.mongodb.com, create an account, follow their steps to create a database
+// replace the connection link on line 26 with yours
+// the databasename can be omitted, you can select this after creating the client
+// just make sure you have your username:password , in my case i chose username admin and password admin
+// use my link as reference if needed
+
+
+########################
 // step 1: create mongoDB and connect to it
 ########################
 

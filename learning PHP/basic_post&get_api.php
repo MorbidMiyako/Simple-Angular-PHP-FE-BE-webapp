@@ -74,6 +74,9 @@ echo $request_method;
 echo "\n";
 ##############
 # $_REQUEST contains get, post and cookies, dropped it to see how it was structured, doesnt allow to see what information belongs to get or post aside from get information being before post information.
+        
+# post information also only works with formdata, it does NOT show the body
+
 // var_dump($_REQUEST);
 // echo "\n";
 
