@@ -20,4 +20,4 @@ next go to the learning MongoDB folder
   basic_MongoDB_stuff.php mainly shows how to connect your database, how to get your standar crud operation etc, advice commenting certain steps out to see the progress from insertion to deletion
   everything uncommented just starts and ends with an emtpy collection
   
-  this next file is currently under construction, working on it a few hours a day when i have some free time.
+  basic_MongoDB_PHP_API folder contains a basic API that talks with a MongoDB, showing how to combine the two, and some interesting notes regarding what works and what doesn't
