@@ -6,6 +6,7 @@ require '../../vendor/autoload.php';
 // step 3: hook database up to api -> test using simple get
 // step 4: setup api to allow crud operations
 // step 5: hook up api crud operations to allow api to make changes
+// step 6: move db class to it's own file
 ################################################
 
 // creating a class to easily call functions and later easily move the class into its own file
@@ -312,7 +313,6 @@ function server($request_method, $request_uri, $body, $CRUD_operations) {
     };
 };
 
-// step 6: move db class to it's own file
 // step 7: move on to learning and building an Angular FE
 
 ?>
