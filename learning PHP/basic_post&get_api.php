@@ -1,6 +1,23 @@
 <?php 
 
+# original filename basic_post&get_api.php 
+
 /*
+
+########################################
+running a server in php:
+########################################
+
+its incredibly simple:
+
+1) server file has to be called index.php and exist in your root project fold
+2) run the following line in your terminal of choice:
+    php -S localhost:5000
+
+    (you can choose the link yourself, along with the port, but local host tends to be pretty standard)
+
+if you want to run this server, either drag it up, or dive down and rename the file to index.php
+
 ########################################
 outline basic api
 ########################################

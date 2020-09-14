@@ -90,14 +90,18 @@ $CRUD_operations = new CRUD_operations();
 // set variables
 $CRUD_operations->setVariables();
 
-// call server function, uses both the method and uri
+// set input variables
 $request_method = $_SERVER['REQUEST_METHOD'];
 // explode splits into array, we just want the stuff before the first ?
 $request_uri = explode("?", $_SERVER['REQUEST_URI'])[0];
-server($request_method, $request_uri, $CRUD_operations);
+// prefer getting the object for consistency
+$body = json_decode(file_get_contents('php://input'));
+
+// call server function
+server($request_method, $request_uri, $body ,$CRUD_operations);
 
 // server function
-function server($request_method, $request_uri, $CRUD_operations) {
+function server($request_method, $request_uri, $body, $CRUD_operations) {
     
     // first check which uri was used
     switch($request_uri) {
@@ -128,8 +132,51 @@ function server($request_method, $request_uri, $CRUD_operations) {
         
                     break;
 
+                // make changes to a user
+                case 'PUT':
+
+                    break;
+
+                // delete a user
+                case 'DELETE':
+
+                    break;
+
+                // default
+                default:
+                    echo 'only GET, PUT and DELETE are available';
+
+
             }
             break;
+        
+        // add a new user
+        case '/new_user':
+
+            // next check method
+            switch($request_method) {
+
+                // create a new user
+                case 'POST':
+
+                    if (isset($body->new_user)) {
+                        $new_user = $body->new_user;
+                        if (isset($new_user->name) && isset($new_user->bio) && isset($new_user->username)) {
+                            $document = $CRUD_operations->add_one_user(json_encode($new_user));
+                            echo MongoDB\BSON\toJSON(MongoDB\BSON\fromPHP($document));
+
+                        }
+                    }
+
+                    break;
+
+                default:
+                    echo "only POST is available, in the form: \n
+                        'new_user' : \n
+                            'name' : 'name', \n
+                            'bio' : 'bio description', \n
+                            'username' : 'username' \n
+                        ";
 
         // allname to get all users by name
         case '/allname':
@@ -156,6 +203,7 @@ function server($request_method, $request_uri, $CRUD_operations) {
                     }
         
                     break;
+
 
             }
             break;
